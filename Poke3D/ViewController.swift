@@ -64,16 +64,21 @@ extension ViewController: ARSCNViewDelegate {
             
             node.addChildNode(planeNode)
             
-            if let pokeScene = SCNScene(named: "art.scnassets/eevee.scn") {
-                if let pokeNode = pokeScene.rootNode.childNodes.first {
-                    pokeNode.eulerAngles.x = Float.pi / 2
-                    planeNode.addChildNode(pokeNode)
+            if imageAnchor.referenceImage.name == "eevee-card" {
+                if let eeveeScene = SCNScene(named: "art.scnassets/eevee.scn") {
+                    if let eeveeNode = eeveeScene.rootNode.childNodes.first {
+                        eeveeNode.eulerAngles.x = Float.pi / 2
+                        planeNode.addChildNode(eeveeNode)
+                    }
                 }
-                
+            } else {
+                if let oddishScene = SCNScene(named: "art.scnassets/oddish.scn") {
+                    if let oddishNode = oddishScene.rootNode.childNodes.first {
+                        oddishNode.eulerAngles.x = Float.pi / 2
+                        planeNode.addChildNode(oddishNode)
+                    }
+                }
             }
-            
-            
-            
         }
         
         return node
