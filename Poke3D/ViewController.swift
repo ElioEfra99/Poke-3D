@@ -18,6 +18,8 @@ class ViewController: UIViewController {
         
         // Set the view's delegate
         sceneView.delegate = self
+        
+        sceneView.autoenablesDefaultLighting = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,6 +63,16 @@ extension ViewController: ARSCNViewDelegate {
             planeNode.eulerAngles.x = -.pi / 2
             
             node.addChildNode(planeNode)
+            
+            if let pokeScene = SCNScene(named: "art.scnassets/eevee.scn") {
+                if let pokeNode = pokeScene.rootNode.childNodes.first {
+                    pokeNode.eulerAngles.x = Float.pi / 2
+                    planeNode.addChildNode(pokeNode)
+                }
+                
+            }
+            
+            
             
         }
         
